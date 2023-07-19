@@ -2,24 +2,69 @@ import Header from "./components/Header";
 import Post from "./components/Post";
 import Sidebar from "./components/Sidebar";
 
-import styles from './App.module.css';
-import './global.css';
+import styles from "./App.module.css";
+import "./global.css";
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://github.com/eualbino.png",
+      name: "Lucas Gonçalves",
+      role: "CTO @ Rocketseat",
+    },
+    content: [
+      { type: "paragraph", content: "Fala galeraa 👋" },
+      {
+        type: "paragraph",
+        content:
+          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat.",
+      },
+      { type: "link", content: "jane.design/doctorcare" },
+    ],
+    publishedAt: new Date("2023-05-03 20:00:00"),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://github.com./MikaelBraghini.png",
+      name: "Mikael Braghini",
+      role: "CTO @ Rocketseat",
+    },
+    content: [
+      { type: "paragraph", content: "Fala galeraa 👋" },
+      {
+        type: "paragraph",
+        content:
+          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat.",
+      },
+      { type: "link", content: "jane.design/doctorcare" },
+    ],
+    publishedAt: new Date("2023-05-10 20:00:00"),
+  },
+];
 
 function App() {
   return (
     <div>
-      <Header/>
+      <Header />
       <div className={styles.wrapper}>
-        <Sidebar/>
+        <Sidebar />
         <main>
-          <Post 
-            author="Diego Fernandes"
-            contents="Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure blanditiis labore error deserunt dolorem laboriosam consectetur molestias, repudiandae quidem distinctio perspiciatis deleniti ea cum cupiditate, rem necessitatibus tenetur dicta laborum?"
-          />
+          {posts.map((post) => {
+            return (
+              <Post
+                key={post.id}
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            );
+          })}
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
